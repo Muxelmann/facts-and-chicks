@@ -1,0 +1,10 @@
+version: "Apple Swift version 2.1.1 (swiftlang-700.1.101.15 clang-700.1.81)"
+options: "d84ccfe4cd2f615a455bb4fa7d5e3a50"
+build_time: [507165073, 809645000]
+inputs:
+  "/Users/Maxi/Desktop/Facts and Chicks/Facts and Chicks/Pref.swift": [507055234, 0]
+  "/Users/Maxi/Desktop/Facts and Chicks/Facts and Chicks/EventMonitor.swift": [506891035, 0]
+  "/Users/Maxi/Desktop/Facts and Chicks/Facts and Chicks/FactsAndChicks.swift": [507118643, 0]
+  "/Users/Maxi/Desktop/Facts and Chicks/Facts and Chicks/Preferences.swift": [507003311, 0]
+  "/Users/Maxi/Desktop/Facts and Chicks/Facts and Chicks/AppDelegate.swift": [507126371, 0]
+  "/Users/Maxi/Desktop/Facts and Chicks/Facts and Chicks/ChickViewController.swift": [507126465, 0]

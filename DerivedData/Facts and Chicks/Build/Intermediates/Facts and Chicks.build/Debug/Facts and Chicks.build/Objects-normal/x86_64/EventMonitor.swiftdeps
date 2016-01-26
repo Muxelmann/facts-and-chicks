@@ -1,0 +1,93 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "EventMonitor"
+provides-nominal:
+- "C16Facts_and_Chicks12EventMonitor"
+provides-member:
+- ["C16Facts_and_Chicks12EventMonitor", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- "EventMonitor"
+- "NSEvent"
+- "AnyObject"
+- "NSEventMask"
+depends-member:
+- !private ["PSs9AnyObject", "NSEvent"]
+- !private ["PSs9AnyObject", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["PSs9AnyObject", "deinit"]
+- !private ["PSs9AnyObject", "handler"]
+- !private ["PSs9AnyObject", "mask"]
+- !private ["PSs9AnyObject", "monitor"]
+- !private ["PSs9AnyObject", "removeMonitor"]
+- !private ["PSs9AnyObject", "stop"]
+- ["PSs9AnyObject", ""]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["PSs25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs11BooleanType", "_getBuiltinLogicValue"]
+- !private ["PSs11CVarArgType", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["PSs11CVarArgType", "removeMonitor"]
+- !private ["PSs23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs23CustomStringConvertible", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["PSs23CustomStringConvertible", "removeMonitor"]
+- !private ["PSs9Equatable", "_getBuiltinLogicValue"]
+- !private ["PSs9Equatable", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["PSs9Equatable", "removeMonitor"]
+- ["C16Facts_and_Chicks12EventMonitor", "AnyObject"]
+- ["C16Facts_and_Chicks12EventMonitor", "NSEvent"]
+- ["C16Facts_and_Chicks12EventMonitor", "NSEventMask"]
+- ["C16Facts_and_Chicks12EventMonitor", "deinit"]
+- !private ["C16Facts_and_Chicks12EventMonitor", "handler"]
+- ["C16Facts_and_Chicks12EventMonitor", "init"]
+- !private ["C16Facts_and_Chicks12EventMonitor", "mask"]
+- !private ["C16Facts_and_Chicks12EventMonitor", "monitor"]
+- ["C16Facts_and_Chicks12EventMonitor", "start"]
+- ["C16Facts_and_Chicks12EventMonitor", "stop"]
+- !private ["PSs8Hashable", "_getBuiltinLogicValue"]
+- !private ["PSs8Hashable", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["PSs8Hashable", "removeMonitor"]
+- !private ["PSo8NSCoding", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["PSo8NSCoding", "removeMonitor"]
+- !private ["PSo9NSCopying", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["PSo9NSCopying", "removeMonitor"]
+- !private ["CSo7NSEvent", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["CSo7NSEvent", "removeMonitor"]
+- !private ["CSo8NSObject", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["CSo8NSObject", "removeMonitor"]
+- !private ["PSo16NSObjectProtocol", "addGlobalMonitorForEventsMatchingMask"]
+- !private ["PSo16NSObjectProtocol", "removeMonitor"]
+- !private ["Sq", "deinit"]
+- !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["PSs12_Reflectable", "_getBuiltinLogicValue"]
+depends-nominal:
+- "PSs9AnyObject"
+- !private "Sb"
+- !private "PSs25BooleanLiteralConvertible"
+- !private "PSs11BooleanType"
+- !private "PSs11CVarArgType"
+- !private "PSs23CustomStringConvertible"
+- !private "PSs9Equatable"
+- "C16Facts_and_Chicks12EventMonitor"
+- !private "PSs8Hashable"
+- !private "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "CSo7NSEvent"
+- !private "CSo8NSObject"
+- !private "PSo16NSObjectProtocol"
+- !private "Sq"
+- !private "PSs33_BuiltinBooleanLiteralConvertible"
+- !private "PSs21_ObjectiveCBridgeable"
+- !private "PSs12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/AppKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
+interface-hash: "d95ef379515bec049b9ae3dfdb040f39"

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ChickViewController" customModule="Facts_and_Chicks" customModuleProvider="target">
+            <connections>
+                <outlet property="downloadButton" destination="8eZ-7K-jYU" id="zdt-XA-1SU"/>
+                <outlet property="loadingIndicator" destination="msg-RU-qmd" id="zcs-YI-T8d"/>
+                <outlet property="refreshButton" destination="Xd5-lK-skJ" id="JBt-0m-XJf"/>
+                <outlet property="refreshButtonHeight" destination="PdH-W5-mnJ" id="QUr-ME-cfk"/>
+                <outlet property="refreshButtonWidth" destination="Osh-oC-aKj" id="fhM-3u-hPZ"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button focusRingType="none" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Xd5-lK-skJ">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="Osh-oC-aKj"/>
+                        <constraint firstAttribute="height" constant="200" id="PdH-W5-mnJ"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" state="on" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="hq5-a8-XNf">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="refresh:" target="-2" id="oLq-37-zjg"/>
+                    </connections>
+                </button>
+                <progressIndicator wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="msg-RU-qmd">
+                    <rect key="frame" x="84" y="84" width="32" height="32"/>
+                </progressIndicator>
+                <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8eZ-7K-jYU">
+                    <rect key="frame" x="20" y="20" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="qZi-AZ-gCY"/>
+                        <constraint firstAttribute="width" constant="42" id="wGz-9w-W2N"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="save" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyDown" sound="Blow" inset="2" id="R1l-ej-fZa">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="downloadImage:" target="-2" id="2TI-OY-3wa"/>
+                    </connections>
+                </button>
+                <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bfv-29-9CQ">
+                    <rect key="frame" x="138" y="20" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="GH3-gg-ZHR"/>
+                        <constraint firstAttribute="height" constant="42" id="Iw7-Ps-oxM"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="source" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="BDN-rR-rpg">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showSource:" target="-2" id="fcc-ED-JSS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Xd5-lK-skJ" secondAttribute="trailing" id="4IF-jF-cQh"/>
+                <constraint firstAttribute="bottom" secondItem="8eZ-7K-jYU" secondAttribute="bottom" constant="20" id="IFM-9P-gpW"/>
+                <constraint firstItem="Xd5-lK-skJ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="KaQ-lL-Hl2"/>
+                <constraint firstItem="Xd5-lK-skJ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="O8F-BN-Fb0"/>
+                <constraint firstItem="msg-RU-qmd" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="YfG-Kk-KHN"/>
+                <constraint firstAttribute="bottom" secondItem="Bfv-29-9CQ" secondAttribute="bottom" constant="20" id="Z2z-It-efJ"/>
+                <constraint firstItem="msg-RU-qmd" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="ch1-Yf-R0b"/>
+                <constraint firstItem="8eZ-7K-jYU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="gAz-fk-iXM"/>
+                <constraint firstAttribute="bottom" secondItem="Xd5-lK-skJ" secondAttribute="bottom" id="tiK-Wv-3Tm"/>
+                <constraint firstAttribute="trailing" secondItem="Bfv-29-9CQ" secondAttribute="trailing" constant="20" id="xCN-99-IPv"/>
+            </constraints>
+            <point key="canvasLocation" x="372" y="258"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="save" width="64" height="64"/>
+        <image name="source" width="64" height="64"/>
+        <sound name="Blow"/>
+    </resources>
+</document>
