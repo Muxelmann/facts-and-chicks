@@ -17,6 +17,7 @@ class ChickViewController: NSViewController, NSUserNotificationCenterDelegate {
     @IBOutlet weak var refreshButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var refreshButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var downloadButton: NSButton!
+    @IBOutlet weak var sourceButton: NSButton!
     
     var chickPic: NSImage? {
         didSet {
@@ -80,7 +81,7 @@ class ChickViewController: NSViewController, NSUserNotificationCenterDelegate {
     private let miniSize = 200.0
     
     override func viewWillAppear() {
-        view.wantsLayer = true
+        // view.wantsLayer = true
         refreshButtonHeight.constant = CGFloat(miniSize)
         refreshButtonWidth.constant = CGFloat(miniSize)
         loadNewImage()
