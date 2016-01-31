@@ -9,7 +9,7 @@
 import Cocoa
 
 class FactsAndChicks {
-    
+    // Tinc change again...
     private static let apiKey = "YKKVEwP0oC4E0LYZcr4zk5fGlw8TdllGNHwUV528IeonfXirJN"
     
     private static func getJSONText(urlString: String) -> String {
