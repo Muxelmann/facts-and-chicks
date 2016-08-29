@@ -131,14 +131,16 @@ class FactsAndChicks {
                     let factIndexEnd = stuff.rangeOfString("</p>")?.startIndex
                     
                     if factIndexStart != nil && factIndexEnd != nil {
-                        fact = stuff.substringWithRange(Range<String.Index>(start: factIndexStart!, end: factIndexEnd!))
+                        fact = stuff.substringWithRange(factIndexStart!..<factIndexEnd!)
+                        //fact = stuff.substringWithRange(Range<String.Index>(start: factIndexStart!, end: factIndexEnd!))
                     }
                     
                     let sourceIndexStart = stuff.rangeOfString("<a href=\"")?.endIndex
-                    let soruceIndexEnd = stuff.rangeOfString("\" target=\"_blank\">")?.startIndex
+                    let sourceIndexEnd = stuff.rangeOfString("\" target=\"_blank\">")?.startIndex
                     
-                    if sourceIndexStart != nil && soruceIndexEnd != nil {
-                        source = NSURL(string: stuff.substringWithRange(Range<String.Index>(start: sourceIndexStart!, end: soruceIndexEnd!)))
+                    if sourceIndexStart != nil && sourceIndexEnd != nil {
+                        source = NSURL(string: stuff.substringWithRange(sourceIndexStart!..<sourceIndexEnd!))
+                        //source = NSURL(string: stuff.substringWithRange(Range<String.Index>(start: sourceIndexStart!, end: sourceIndexEnd!)))
                     }
                     
                 }

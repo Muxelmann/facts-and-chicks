@@ -28,8 +28,8 @@ class PreferencesViewController: NSViewController, NSOpenSavePanelDelegate {
     }
     
     override func viewWillAppear() {
-        version.stringValue = "1.0.0"
-        author.stringValue = "Max Z."
+        version.stringValue = "1.0.2"
+        author.stringValue = "Max"
         
 
         if let lastLocation = Pref.lastWindowLocation {

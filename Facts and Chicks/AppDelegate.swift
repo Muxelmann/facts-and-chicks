@@ -28,18 +28,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "chickNotification:", name: "chickNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "barChangedNotification:", name: NSWindowDidMoveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.chickNotification(_:)), name: "chickNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.barChangedNotification(_:)), name: NSWindowDidMoveNotification, object: nil)
         
         popover.animates = true
         popover.contentViewController = ChickViewController()
         
         let menu = NSMenu()
         
-        menu.addItem(NSMenuItem(title: "Preferences", action: "openPreferences:", keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Preferences", action: #selector(AppDelegate.openPreferences(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Select Menu Chicks", action: nil, keyEquivalent: ""))
         menu.itemArray.last?.submenu = getChickSelectMenu()
-        menu.addItem(NSMenuItem(title: "Reset App", action: "resetApp:", keyEquivalent: "R"))
+        menu.addItem(NSMenuItem(title: "Reset App", action: #selector(AppDelegate.resetApp(_:)), keyEquivalent: "R"))
         menu.addItem(NSMenuItem.separatorItem())
         
         if let postCount = FactsAndChicks.postCount {
@@ -60,7 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         lastUpdate = menu.itemArray.last!
         
         menu.addItem(NSMenuItem.separatorItem())
-        menu.addItem(NSMenuItem(title: "Quit Facts and Chicks", action: "terminate:", keyEquivalent: "q"))
+        menu.addItem(NSMenuItem(title: "Quit Facts and Chicks", action: #selector(NSApp.terminate(_:)), keyEquivalent: "q"))
         
         statusItem.menu = menu
         
@@ -70,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let leftGesture = NSClickGestureRecognizer()
             leftGesture.buttonMask = 0x1
             leftGesture.target = self
-            leftGesture.action = "togglePopover:"
+            leftGesture.action = #selector(AppDelegate.togglePopover(_:))
             button.addGestureRecognizer(leftGesture)
         }
         
@@ -121,19 +121,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let imageSelectMenu = NSMenu()
         
-        imageSelectMenu.addItem(NSMenuItem(title: "Just facts", action: "changeMenuImage:", keyEquivalent: ""))
+        imageSelectMenu.addItem(NSMenuItem(title: "Just facts", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
         imageSelectMenu.itemArray.last!.image = NSImage(named: "starBarButtonImage")
         
-        imageSelectMenu.addItem(NSMenuItem(title: "Facts for one", action: "changeMenuImage:", keyEquivalent: ""))
+        imageSelectMenu.addItem(NSMenuItem(title: "Facts for one", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
         imageSelectMenu.itemArray.last!.image = NSImage(named: "chick1BarButtonImage")
         
-        imageSelectMenu.addItem(NSMenuItem(title: "Facts for two", action: "changeMenuImage:", keyEquivalent: ""))
+        imageSelectMenu.addItem(NSMenuItem(title: "Facts for two", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
         imageSelectMenu.itemArray.last!.image = NSImage(named: "chick2BarButtonImage")
         
-        imageSelectMenu.addItem(NSMenuItem(title: "Nice facts", action: "changeMenuImage:", keyEquivalent: ""))
+        imageSelectMenu.addItem(NSMenuItem(title: "Nice facts", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
         imageSelectMenu.itemArray.last!.image = NSImage(named: "chick4BarButtonImage")
         
-        imageSelectMenu.addItem(NSMenuItem(title: "Even more facts", action: "changeMenuImage:", keyEquivalent: ""))
+        imageSelectMenu.addItem(NSMenuItem(title: "Even more facts", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
         imageSelectMenu.itemArray.last!.image = NSImage(named: "chick3BarButtonImage")
         
         //imageSelectMenu.addItem(NSMenuItem(title: "Clever facts", action: "changeMenuImage:", keyEquivalent: ""))
