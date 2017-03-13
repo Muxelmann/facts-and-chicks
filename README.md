@@ -6,4 +6,4 @@ The main reason behind this app was to challenge me with writing Swift **3**~~2~
 
 ## Preview
 
-![](Supporting/sample.png)
+![](https://github.com/Muxelmann/facts-and-chicks/raw/master/Supporting/sample.png)
