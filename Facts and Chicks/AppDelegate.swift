@@ -11,7 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     var isStatusItemSetup = false
     
     let popover = NSPopover()
@@ -25,11 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: - AppDelegate
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.chickNotification(_:)), name: "chickNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.barChangedNotification(_:)), name: NSWindowDidMoveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.chickNotification(_:)), name: NSNotification.Name(rawValue: "chickNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.barChangedNotification(_:)), name: NSNotification.Name.NSWindowDidMove, object: nil)
         
         popover.animates = true
         popover.contentViewController = ChickViewController()
@@ -38,28 +38,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         menu.addItem(NSMenuItem(title: "Preferences", action: #selector(AppDelegate.openPreferences(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Select Menu Chicks", action: nil, keyEquivalent: ""))
-        menu.itemArray.last?.submenu = getChickSelectMenu()
+        menu.items.last?.submenu = getChickSelectMenu()
         menu.addItem(NSMenuItem(title: "Reset App", action: #selector(AppDelegate.resetApp(_:)), keyEquivalent: "R"))
-        menu.addItem(NSMenuItem.separatorItem())
+        menu.addItem(NSMenuItem.separator())
         
         if let postCount = FactsAndChicks.postCount {
             menu.addItem(NSMenuItem(title: "Posts: \(postCount)", action: nil, keyEquivalent: ""))
         } else {
             menu.addItem(NSMenuItem(title: "Posts: n/a", action: nil, keyEquivalent: ""))
         }
-        postCounter = menu.itemArray.last!
+        postCounter = menu.items.last!
         
         if let updated = FactsAndChicks.lastPostDate {
-            let formatter = NSDateFormatter()
-            let dateFormat = NSDateFormatter.dateFormatFromTemplate("d MMM y", options: 0, locale: NSLocale.currentLocale())
+            let formatter = DateFormatter()
+            let dateFormat = DateFormatter.dateFormat(fromTemplate: "d MMM y", options: 0, locale: Locale.current)
             formatter.dateFormat = dateFormat
-            menu.addItem(NSMenuItem(title: "Updated on " + formatter.stringFromDate(updated), action: nil, keyEquivalent: ""))
+            menu.addItem(NSMenuItem(title: "Updated on " + formatter.string(from: updated as Date), action: nil, keyEquivalent: ""))
         } else {
             menu.addItem(NSMenuItem(title: "Cannot connect", action: nil, keyEquivalent: ""))
         }
-        lastUpdate = menu.itemArray.last!
+        lastUpdate = menu.items.last!
         
-        menu.addItem(NSMenuItem.separatorItem())
+        menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit Facts and Chicks", action: #selector(NSApp.terminate(_:)), keyEquivalent: "q"))
         
         statusItem.menu = menu
@@ -74,18 +74,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.addGestureRecognizer(leftGesture)
         }
         
-        leftMouseEvent = EventMonitor(mask: [NSEventMask.LeftMouseDownMask, NSEventMask.RightMouseDownMask], handler: {[unowned self] event in
-            if self.popover.shown {
+        leftMouseEvent = EventMonitor(mask: [NSEventMask.leftMouseDown, NSEventMask.rightMouseDown], handler: {[unowned self] event in
+            if self.popover.isShown {
                 self.closePopover(event)
             }
-            if self.window.visible {
+            if self.window.isVisible {
                 self.closePreferences(event)
             }
             })
         leftMouseEvent?.start()
         
-        for aWindow in NSApplication.sharedApplication().windows {
-            if aWindow.isKindOfClass(NSWindow) {
+        for aWindow in NSApplication.shared().windows {
+            if aWindow.isKind(of: NSWindow.self) {
                 window = aWindow
                 if !Pref.showPreferences && Pref.hasStarted {
                     self.closePreferences(nil)
@@ -96,22 +96,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         isStatusItemSetup = true
     }
     
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
     
     // MARK: - Functionality
     
-    func resetApp(sender: AnyObject?) {
-        if window.visible {
+    func resetApp(_ sender: AnyObject?) {
+        if window.isVisible {
             closePreferences(sender)
         }
         
-        if popover.shown {
+        if popover.isShown {
             closePopover(sender)
         }
         
-        Pref.clearAllPresets()
+        _ = Pref.clearAllPresets()
         if let button = statusItem.button {
             button.image = NSImage(named: Pref.barButtonImage!)
         }
@@ -122,19 +122,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let imageSelectMenu = NSMenu()
         
         imageSelectMenu.addItem(NSMenuItem(title: "Just facts", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
-        imageSelectMenu.itemArray.last!.image = NSImage(named: "starBarButtonImage")
+        imageSelectMenu.items.last!.image = NSImage(named: "starBarButtonImage")
         
         imageSelectMenu.addItem(NSMenuItem(title: "Facts for one", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
-        imageSelectMenu.itemArray.last!.image = NSImage(named: "chick1BarButtonImage")
+        imageSelectMenu.items.last!.image = NSImage(named: "chick1BarButtonImage")
         
         imageSelectMenu.addItem(NSMenuItem(title: "Facts for two", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
-        imageSelectMenu.itemArray.last!.image = NSImage(named: "chick2BarButtonImage")
+        imageSelectMenu.items.last!.image = NSImage(named: "chick2BarButtonImage")
         
         imageSelectMenu.addItem(NSMenuItem(title: "Nice facts", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
-        imageSelectMenu.itemArray.last!.image = NSImage(named: "chick4BarButtonImage")
+        imageSelectMenu.items.last!.image = NSImage(named: "chick4BarButtonImage")
         
         imageSelectMenu.addItem(NSMenuItem(title: "Even more facts", action: #selector(AppDelegate.changeMenuImage(_:)), keyEquivalent: ""))
-        imageSelectMenu.itemArray.last!.image = NSImage(named: "chick3BarButtonImage")
+        imageSelectMenu.items.last!.image = NSImage(named: "chick3BarButtonImage")
         
         //imageSelectMenu.addItem(NSMenuItem(title: "Clever facts", action: "changeMenuImage:", keyEquivalent: ""))
         //imageSelectMenu.itemArray.last!.image = NSImage(named: "chick5BarButtonImage")
@@ -142,7 +142,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return imageSelectMenu
     }
     
-    func changeMenuImage(sender: AnyObject) {
+    func changeMenuImage(_ sender: AnyObject) {
         if let button = statusItem.button {
             if let image = (sender as? NSMenuItem)?.image {
                 button.image = image
@@ -153,7 +153,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: - Chick model notification
     
-    func chickNotification(notification: NSNotification) {
+    func chickNotification(_ notification: Notification) {
         if !isStatusItemSetup {
             return
         }
@@ -165,58 +165,58 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if let updated = FactsAndChicks.lastPostDate {
-            let formatter = NSDateFormatter()
-            let dateFormat = NSDateFormatter.dateFormatFromTemplate("d MMM y", options: 0, locale: NSLocale.currentLocale())
+            let formatter = DateFormatter()
+            let dateFormat = DateFormatter.dateFormat(fromTemplate: "d MMM y", options: 0, locale: Locale.current)
             formatter.dateFormat = dateFormat
-            lastUpdate?.title = "Updated on " + formatter.stringFromDate(updated)
+            lastUpdate?.title = "Updated on " + formatter.string(from: updated as Date)
         } else {
             lastUpdate?.title = "Cannot connect"
         }
     }
     
-    func barChangedNotification(notification: NSNotification) {
+    func barChangedNotification(_ notification: Notification) {
         if let object = notification.object {
-            if object.description.containsString("NSStatusBarWindow") && popover.shown{
-                closePopover(notification)
+            if (object as AnyObject).description.contains("NSStatusBarWindow") && popover.isShown{
+                closePopover(notification as AnyObject?)
             }
         }
     }
     
     // MARK: - Show and hide popover & window
     
-    func showPopover(sender: AnyObject?) {
+    func showPopover(_ sender: AnyObject?) {
         if let button = statusItem.button {
-            popover.showRelativeToRect(button.bounds, ofView: button, preferredEdge: NSRectEdge.MinY)
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
             leftMouseEvent?.start()
         }
     }
     
-    func closePopover(sender: AnyObject?) {
+    func closePopover(_ sender: AnyObject?) {
         popover.performClose(sender)
         leftMouseEvent?.stop()
     }
     
-    func togglePopover(sender: AnyObject?) {
-        if popover.shown {
+    func togglePopover(_ sender: AnyObject?) {
+        if popover.isShown {
             closePopover(sender)
         } else {
             showPopover(sender)
         }
     }
     
-    func showPreferences(sender: AnyObject?) {
+    func showPreferences(_ sender: AnyObject?) {
         window.makeKeyAndOrderFront(sender)
-        NSApp.activateIgnoringOtherApps(true)
+        NSApp.activate(ignoringOtherApps: true)
         window.becomeFirstResponder()
     }
     
-    func closePreferences(sender: AnyObject?) {
+    func closePreferences(_ sender: AnyObject?) {
         window.orderOut(sender)
         window.resignFirstResponder()
     }
     
-    func openPreferences(sender: AnyObject?) {
-        if window.visible {
+    func openPreferences(_ sender: AnyObject?) {
+        if window.isVisible {
             closePreferences(sender)
         } else {
             showPreferences(sender)

@@ -4,4 +4,6 @@ This menu app obtains a random image from the facts and chicks website and displ
 
 The main reason behind this app was to challenge me with writing Swift **3**~~2~~ code, as well as making a funny little app.
 
+## Preview
 
+![](Supporting/sample.png)

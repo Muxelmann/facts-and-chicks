@@ -7,15 +7,39 @@
 //
 
 import Cocoa
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 class FactsAndChicks {
     
-    private static let apiKey = "YKKVEwP0oC4E0LYZcr4zk5fGlw8TdllGNHwUV528IeonfXirJN"
+    fileprivate static let apiKey = "YKKVEwP0oC4E0LYZcr4zk5fGlw8TdllGNHwUV528IeonfXirJN"
     
-    private static func getJSONText(urlString: String) -> String {
-        if let url = NSURL(string: urlString) {
+    fileprivate static func getJSONText(_ urlString: String) -> String {
+        if let url = URL(string: urlString) {
             do {
-                let text = try String(contentsOfURL: url, encoding: NSUTF8StringEncoding)
+                let text = try String(contentsOf: url, encoding: String.Encoding.utf8)
                 isPageReachableBool = true
                 return text
             } catch {
@@ -26,10 +50,10 @@ class FactsAndChicks {
         return ""
     }
     
-    private static var isPageReachableBool = false {
+    fileprivate static var isPageReachableBool = false {
         willSet {
             if mainInfo != nil {
-                NSNotificationCenter.defaultCenter().postNotificationName("chickNotification", object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "chickNotification"), object: nil)
             }
         }
     }
@@ -37,14 +61,14 @@ class FactsAndChicks {
         get { return isPageReachableBool }
     }
     
-    private static func parseJSONString(text: String) -> [String:AnyObject]? {
+    fileprivate static func parseJSONString(_ text: String) -> [String:AnyObject]? {
         if text.isEmpty || !isReachable {
             return nil
         }
         
-        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+        if let data = text.data(using: String.Encoding.utf8) {
             do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 return json
             } catch let error as NSError {
                 print("PARSING ERROR: Could not parse JSON text")
@@ -54,14 +78,14 @@ class FactsAndChicks {
         return nil
     }
     
-    private static func getData(urlString: String) -> [String:AnyObject]? {
+    fileprivate static func getData(_ urlString: String) -> [String:AnyObject]? {
         return parseJSONString(getJSONText(urlString + apiKey))
     }
     
     // MARK: - get main information only
     
-    private static let mainInfoURL = "https://api.tumblr.com/v2/blog/factsandchicks.com/info?api_key="
-    private static var mainInfo: [String:AnyObject]?
+    fileprivate static let mainInfoURL = "https://api.tumblr.com/v2/blog/factsandchicks.com/info?api_key="
+    fileprivate static var mainInfo: [String:AnyObject]?
     
     static var postCount: Int? {
         get {
@@ -69,34 +93,23 @@ class FactsAndChicks {
                 mainInfo = getData(mainInfoURL)
             }
             
-            if let info = mainInfo {
-                if let response = info["response"] {
-                    if let blog = response["blog"] {
-                        if let posts = blog?["posts"] as? Int {
-                            return posts
-                        }
-                    }
-                }
+            
+            if let posts = ((mainInfo?["response"] as! [String: AnyObject]?)?["blog"] as! [String: AnyObject]?)?["posts"] as? Int {
+                return posts
             }
             return nil
         }
     }
     
-    static var lastPostDate: NSDate? {
+    static var lastPostDate: Date? {
         get {
             if mainInfo == nil {
                 mainInfo = getData(mainInfoURL)
-                print(mainInfo)
+                print(mainInfo!)
             }
             
-            if let info = mainInfo {
-                if let response = info["response"] {
-                    if let blog = response["blog"] {
-                        if let updated = blog?["updated"] as? Int {
-                            return NSDate(timeIntervalSince1970: Double(updated))
-                        }
-                    }
-                }
+            if let updated = ((mainInfo?["response"] as! [String: AnyObject]?)?["blog"] as! [String: AnyObject]?)?["updated"] as? Int {
+                return Date(timeIntervalSince1970: Double(updated))
             }
             return nil
         }
@@ -104,42 +117,43 @@ class FactsAndChicks {
     
     // MARK: - load single post information
     
-    private let postInfoURL = "https://api.tumblr.com/v2/blog/factsandchicks.com/posts?limit=1&offset=<POST_ID>&api_key="
-    private var postInfo: [String:AnyObject]?
-    private var postSummary: (NSURL?, String?, NSURL?) = (nil, nil, nil)
+    fileprivate let postInfoURL = "https://api.tumblr.com/v2/blog/factsandchicks.com/posts?limit=1&offset=<POST_ID>&api_key="
+    fileprivate var postInfo: [String:AnyObject]?
+    fileprivate var postSummary: (URL?, String?, URL?) = (nil, nil, nil)
     
-    private func loadPost(id: Int) {
+    fileprivate func loadPost(_ id: Int) {
         var postID = id
         if id >= FactsAndChicks.postCount || id < 0 {
             postID = 0
         }
-        postInfo = FactsAndChicks.getData(postInfoURL.stringByReplacingOccurrencesOfString("<POST_ID>", withString: "\(postID)"))
+        postInfo = FactsAndChicks.getData(postInfoURL.replacingOccurrences(of: "<POST_ID>", with: "\(postID)"))
         
-        var url: NSURL?
+        var url: URL?
         var fact: String?
-        var source: NSURL?
+        var source: URL?
         
         if let info = postInfo {
-            if let photoURL = info["response"]!["posts"]!!.firstObject!!["photos"]!!.firstObject!!["original_size"]!!["url"]! as? String {
-                url = NSURL(string: photoURL)
+        
+            if let photoURL = (((((info["response"] as! [String: AnyObject]?)?["posts"] as! [AnyObject])[0] as! NSDictionary).value(forKey: "photos") as! [NSDictionary])[0].value(forKey: "original_size") as! NSDictionary).value(forKey: "url") as? String {
+                url = URL(string: photoURL)
             }
             
-            if let stuff = info["response"]!["posts"]!!.firstObject!!["caption"]! as? String {
+            if let stuff = (((info["response"] as! [String: AnyObject]?)?["posts"] as! [AnyObject]?)?.first as! [String: AnyObject]?)?["caption"] as? String {
                 if !stuff.isEmpty {
                     
-                    let factIndexStart = stuff.rangeOfString("<p>")?.endIndex
-                    let factIndexEnd = stuff.rangeOfString("</p>")?.startIndex
+                    let factIndexStart = stuff.range(of: "<p>")?.upperBound
+                    let factIndexEnd = stuff.range(of: "</p>")?.lowerBound
                     
                     if factIndexStart != nil && factIndexEnd != nil {
-                        fact = stuff.substringWithRange(factIndexStart!..<factIndexEnd!)
+                        fact = stuff.substring(with: factIndexStart!..<factIndexEnd!)
                         //fact = stuff.substringWithRange(Range<String.Index>(start: factIndexStart!, end: factIndexEnd!))
                     }
                     
-                    let sourceIndexStart = stuff.rangeOfString("<a href=\"")?.endIndex
-                    let sourceIndexEnd = stuff.rangeOfString("\" target=\"_blank\">")?.startIndex
+                    let sourceIndexStart = stuff.range(of: "<a href=\"")?.upperBound
+                    let sourceIndexEnd = stuff.range(of: "\" target=\"_blank\">")?.lowerBound
                     
                     if sourceIndexStart != nil && sourceIndexEnd != nil {
-                        source = NSURL(string: stuff.substringWithRange(sourceIndexStart!..<sourceIndexEnd!))
+                        source = URL(string: stuff.substring(with: sourceIndexStart!..<sourceIndexEnd!))
                         //source = NSURL(string: stuff.substringWithRange(Range<String.Index>(start: sourceIndexStart!, end: sourceIndexEnd!)))
                     }
                     
@@ -150,7 +164,7 @@ class FactsAndChicks {
         postSummary = (url, fact, source)
     }
     
-    private func loadRandomPost() {
+    fileprivate func loadRandomPost() {
         let postID = Int(arc4random()) % (FactsAndChicks.postCount ?? 1)
         loadPost(postID)
     }
@@ -163,7 +177,7 @@ class FactsAndChicks {
     var image: NSImage {
         get {
             if let url = postSummary.0 {
-                if let image = NSImage(contentsOfURL: url) {
+                if let image = NSImage(contentsOf: url) {
                     return image
                 }
             }
@@ -181,7 +195,7 @@ class FactsAndChicks {
         return postSummary.1
     }
     
-    var source: NSURL? {
+    var source: URL? {
         return postSummary.2
     }
     

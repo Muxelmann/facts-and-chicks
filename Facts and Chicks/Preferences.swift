@@ -28,7 +28,7 @@ class PreferencesViewController: NSViewController, NSOpenSavePanelDelegate {
     }
     
     override func viewWillAppear() {
-        version.stringValue = "1.0.2"
+        version.stringValue = "1.0.3"
         author.stringValue = "Max"
         
 
@@ -42,11 +42,7 @@ class PreferencesViewController: NSViewController, NSOpenSavePanelDelegate {
             showPreferencesUponStart.state = 1
         }
         
-        if let folder = Pref.saveDirectory.lastPathComponent {
-            saveDirButton.title = "/" + folder
-        } else {
-            saveDirButton.title = "UNKNOWN"
-        }
+        saveDirButton.title = "/" + Pref.saveDirectory.lastPathComponent
         
         let fixVal = Pref.fixDimension
         var savedItem: NSMenuItem? = nil
@@ -59,7 +55,7 @@ class PreferencesViewController: NSViewController, NSOpenSavePanelDelegate {
             default: break
             }
         }
-        fixDimension.selectItem(savedItem)
+        fixDimension.select(savedItem)
         
         let fixSize = Pref.fixSize
         width.stringValue = Int(fixSize.width).description
@@ -71,7 +67,7 @@ class PreferencesViewController: NSViewController, NSOpenSavePanelDelegate {
         Pref.lastWindowLocation = myWindow.frame
     }
     
-    @IBAction func fixSize(sender: NSPopUpButton) {
+    @IBAction func fixSize(_ sender: NSPopUpButton) {
         if let item = sender.selectedItem {
             switch item.title {
             case "width":
@@ -89,7 +85,7 @@ class PreferencesViewController: NSViewController, NSOpenSavePanelDelegate {
         }
     }
     
-    @IBAction func changeSize(sender: NSSlider) {
+    @IBAction func changeSize(_ sender: NSSlider) {
         var savedSize = Pref.fixSize
         
         if sender.identifier == "heightSlider" {
@@ -111,11 +107,11 @@ class PreferencesViewController: NSViewController, NSOpenSavePanelDelegate {
         Pref.fixSize = CGSize(width: 640, height: 960)
     }
     
-    @IBAction func toggleShow(sender: NSButton) {
+    @IBAction func toggleShow(_ sender: NSButton) {
         Pref.showPreferences = (sender.state == 1)
     }
     
-    @IBAction func saveDiretcory(sender: NSButton) {
+    @IBAction func saveDiretcory(_ sender: NSButton) {
         
         let openDlg = NSOpenPanel()
         openDlg.canChooseFiles = false
@@ -125,19 +121,19 @@ class PreferencesViewController: NSViewController, NSOpenSavePanelDelegate {
         
         if openDlg.runModal() == NSModalResponseOK {
             if let directoryURL = openDlg.directoryURL {
-            
-                if let folder = directoryURL.lastPathComponent {
-                    Pref.saveDirectory = directoryURL
-                    saveDirButton.title = "/" + folder
-                }
+                
+                let folder = directoryURL.lastPathComponent
+                Pref.saveDirectory = directoryURL
+                saveDirButton.title = "/" + folder
+                
             }
         } else {
             print("aww...")
         }
     }
     
-    func panelSelectionDidChange(sender: AnyObject?) {
-        print(sender)
+    func panelSelectionDidChange(_ sender: Any?) {
+        print(sender!)
     }
 }
 
@@ -145,7 +141,7 @@ class PreferencesWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        self.window?.movableByWindowBackground = true
+        self.window?.isMovableByWindowBackground = true
         
         if let preferences = self.contentViewController as? PreferencesViewController {
             preferences.myWindow = self.window

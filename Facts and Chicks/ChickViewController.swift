@@ -46,8 +46,8 @@ class ChickViewController: NSViewController, NSUserNotificationCenterDelegate {
                 
                 var maxHeight: CGFloat
                 var maxWidth: CGFloat
-                maxHeight = NSScreen.mainScreen()!.visibleFrame.height - CGFloat(50)
-                maxWidth = NSScreen.mainScreen()!.visibleFrame.width - CGFloat(50)
+                maxHeight = NSScreen.main()!.visibleFrame.height - CGFloat(50)
+                maxWidth = NSScreen.main()!.visibleFrame.width - CGFloat(50)
                 
                 if height > maxHeight {
                     height = maxHeight
@@ -63,10 +63,10 @@ class ChickViewController: NSViewController, NSUserNotificationCenterDelegate {
                 refreshButtonWidth.animator().constant = width
                 
                 refreshButton.image = pic
-                loadingIndicator.hidden = true
+                loadingIndicator.isHidden = true
                 loadingIndicator.stopAnimation(nil)
-                refreshButton.enabled = true
-                downloadButton.enabled = true
+                refreshButton.isEnabled = true
+                downloadButton.isEnabled = true
             }
         }
     }
@@ -75,10 +75,10 @@ class ChickViewController: NSViewController, NSUserNotificationCenterDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+        NSUserNotificationCenter.default.delegate = self
     }
     
-    private let miniSize = 200.0
+    fileprivate let miniSize = 200.0
     
     override func viewWillAppear() {
         // view.wantsLayer = true
@@ -92,10 +92,10 @@ class ChickViewController: NSViewController, NSUserNotificationCenterDelegate {
         refreshButtonWidth.constant = CGFloat(miniSize)
     }
     
-    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         // center.removeAllDeliveredNotifications()
-        center.deliveredNotifications
-        for (i, deliveredNotification) in center.deliveredNotifications.enumerate() {
+        _ = center.deliveredNotifications
+        for (i, deliveredNotification) in center.deliveredNotifications.enumerated() {
             if i > 0 {
                 center.removeDeliveredNotification(deliveredNotification)
             }
@@ -104,30 +104,29 @@ class ChickViewController: NSViewController, NSUserNotificationCenterDelegate {
         return true
     }
     
-    @IBAction func refresh(sender: AnyObject) {
+    @IBAction func refresh(_ sender: AnyObject) {
         loadNewImage()
     }
     
-    @IBAction func downloadImage(sender: AnyObject) {
+    @IBAction func downloadImage(_ sender: AnyObject) {
         
-        if let path = Pref.saveDirectory.path {
-            // print(path)
-            
-            // if let image = chickPic {
-            //     image.savePNG(path + "/chick.png")
-            // }
-            
-            if !facts.imageName.isEmpty {
-                facts.image.savePNG(path + "/" + facts.imageName)
-            }
-            
+        let path = Pref.saveDirectory.path
+        // print(path)
+        
+        // if let image = chickPic {
+        //     image.savePNG(path + "/chick.png")
+        // }
+        
+        if !facts.imageName.isEmpty {
+            _ = facts.image.savePNG(path + "/" + facts.imageName)
         }
-        downloadButton.enabled = false
+        
+        downloadButton.isEnabled = false
     }
     
-    @IBAction func showSource(sender: AnyObject) {
+    @IBAction func showSource(_ sender: AnyObject) {
         if let url = facts.source {
-            NSWorkspace.sharedWorkspace().openURL(url)
+            NSWorkspace.shared().open(url as URL)
         } else {
             let notification = NSUserNotification()
             notification.title = "Source issue"
@@ -138,23 +137,23 @@ class ChickViewController: NSViewController, NSUserNotificationCenterDelegate {
         
             NSSound(named: "uh-oh")?.play()
         
-            NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+            NSUserNotificationCenter.default.deliver(notification)
         }
     }
     
-    private func loadNewImage() {
+    fileprivate func loadNewImage() {
         
         refreshButton.image = nil
         
         loadingIndicator.startAnimation(nil)
-        loadingIndicator.hidden = false
+        loadingIndicator.isHidden = false
         
-        refreshButton.enabled = false
-        downloadButton.enabled = false
+        refreshButton.isEnabled = false
+        downloadButton.isEnabled = false
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        DispatchQueue.global().async(execute: {
             let newChickPic = self.facts.newImage
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.chickPic = newChickPic
             })
         })
@@ -162,10 +161,10 @@ class ChickViewController: NSViewController, NSUserNotificationCenterDelegate {
 }
 
 extension NSImage {
-    var imagePNGRepresentation: NSData {
-        return NSBitmapImageRep(data: TIFFRepresentation!)!.representationUsingType(.NSPNGFileType, properties: [:])!
+    var imagePNGRepresentation: Data {
+        return NSBitmapImageRep(data: tiffRepresentation!)!.representation(using: .PNG, properties: [:])!
     }
-    func savePNG(path:String) -> Bool {
-        return imagePNGRepresentation.writeToFile(path, atomically: true)
+    func savePNG(_ path:String) -> Bool {
+        return ((try? imagePNGRepresentation.write(to: URL(fileURLWithPath: path), options: [.atomic])) != nil)
     }
 }
