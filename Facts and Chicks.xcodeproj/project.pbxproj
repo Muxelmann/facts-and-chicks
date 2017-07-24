@@ -19,23 +19,6 @@
 		5488B3541C53FABC0057E106 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5488B3531C53FABC0057E106 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5488B35E1C53FABC0057E106 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5488B3441C53FABC0057E106 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5488B34B1C53FABC0057E106;
-			remoteInfo = "Facts and Chicks - Menu";
-		};
-		5488B3691C53FABC0057E106 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5488B3441C53FABC0057E106 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5488B34B1C53FABC0057E106;
-			remoteInfo = "Facts and Chicks - Menu";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		541CFBF41C55D25D008C770D /* FactsAndChicks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactsAndChicks.swift; sourceTree = "<group>"; };
 		5432873A1C5688A80090C871 /* uh-oh.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "uh-oh.aiff"; sourceTree = "<group>"; };
@@ -45,30 +28,14 @@
 		5444EBB51C543ED900152E2C /* ChickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChickViewController.xib; sourceTree = "<group>"; };
 		5444EBE71C5456D100152E2C /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		5466E8D71C5565E100B4B514 /* Pref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pref.swift; sourceTree = "<group>"; };
-		5488B34C1C53FABC0057E106 /* Facts and Chicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facts and Chicks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5488B34C1C53FABC0057E106 /* Facts and Chicks.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "Facts and Chicks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5488B34F1C53FABC0057E106 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5488B3531C53FABC0057E106 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5488B3581C53FABC0057E106 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5488B35D1C53FABC0057E106 /* Facts and Chicks.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Facts and Chicks.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5488B3681C53FABC0057E106 /* Facts and Chicks.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Facts and Chicks.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5488B3491C53FABC0057E106 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5488B35A1C53FABC0057E106 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5488B3651C53FABC0057E106 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -90,8 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				5488B34C1C53FABC0057E106 /* Facts and Chicks.app */,
-				5488B35D1C53FABC0057E106 /* Facts and Chicks.xctest */,
-				5488B3681C53FABC0057E106 /* Facts and Chicks.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,49 +99,13 @@
 			productReference = 5488B34C1C53FABC0057E106 /* Facts and Chicks.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5488B35C1C53FABC0057E106 /* Facts and ChicksTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5488B3741C53FABC0057E106 /* Build configuration list for PBXNativeTarget "Facts and ChicksTests" */;
-			buildPhases = (
-				5488B3591C53FABC0057E106 /* Sources */,
-				5488B35A1C53FABC0057E106 /* Frameworks */,
-				5488B35B1C53FABC0057E106 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5488B35F1C53FABC0057E106 /* PBXTargetDependency */,
-			);
-			name = "Facts and ChicksTests";
-			productName = "Facts and Chicks - MenuTests";
-			productReference = 5488B35D1C53FABC0057E106 /* Facts and Chicks.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		5488B3671C53FABC0057E106 /* Facts and ChicksUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5488B3771C53FABC0057E106 /* Build configuration list for PBXNativeTarget "Facts and ChicksUITests" */;
-			buildPhases = (
-				5488B3641C53FABC0057E106 /* Sources */,
-				5488B3651C53FABC0057E106 /* Frameworks */,
-				5488B3661C53FABC0057E106 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5488B36A1C53FABC0057E106 /* PBXTargetDependency */,
-			);
-			name = "Facts and ChicksUITests";
-			productName = "Facts and Chicks - MenuUITests";
-			productReference = 5488B3681C53FABC0057E106 /* Facts and Chicks.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		5488B3441C53FABC0057E106 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Maximilian Zangs";
 				TargetAttributes = {
@@ -189,14 +118,6 @@
 								enabled = 0;
 							};
 						};
-					};
-					5488B35C1C53FABC0057E106 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 5488B34B1C53FABC0057E106;
-					};
-					5488B3671C53FABC0057E106 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 5488B34B1C53FABC0057E106;
 					};
 				};
 			};
@@ -214,8 +135,6 @@
 			projectRoot = "";
 			targets = (
 				5488B34B1C53FABC0057E106 /* Facts and Chicks */,
-				5488B35C1C53FABC0057E106 /* Facts and ChicksTests */,
-				5488B3671C53FABC0057E106 /* Facts and ChicksUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,20 +148,6 @@
 				5444EBB61C543ED900152E2C /* ChickViewController.xib in Resources */,
 				5444EBB41C543EB300152E2C /* Main.storyboard in Resources */,
 				5432873B1C5688A80090C871 /* uh-oh.aiff in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5488B35B1C53FABC0057E106 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5488B3661C53FABC0057E106 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,34 +167,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5488B3591C53FABC0057E106 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5488B3641C53FABC0057E106 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5488B35F1C53FABC0057E106 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5488B34B1C53FABC0057E106 /* Facts and Chicks */;
-			targetProxy = 5488B35E1C53FABC0057E106 /* PBXContainerItemProxy */;
-		};
-		5488B36A1C53FABC0057E106 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5488B34B1C53FABC0057E106 /* Facts and Chicks */;
-			targetProxy = 5488B3691C53FABC0057E106 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5488B36F1C53FABC0057E106 /* Debug */ = {
@@ -311,7 +189,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -330,7 +208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -357,7 +235,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -370,7 +248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -381,15 +259,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = F2J2K4TXP5;
 				INFOPLIST_FILE = "$(SRCROOT)/Facts and Chicks/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Maxi.Facts-and-Chicks";
 				PRODUCT_NAME = "Facts and Chicks";
-				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -398,68 +274,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = F2J2K4TXP5;
 				INFOPLIST_FILE = "$(SRCROOT)/Facts and Chicks/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Maxi.Facts-and-Chicks";
 				PRODUCT_NAME = "Facts and Chicks";
-				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		5488B3751C53FABC0057E106 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Facts and Chicks - MenuTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Maxi.Facts-and-Chicks---MenuTests";
-				PRODUCT_NAME = "Facts and Chicks";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Facts and Chicks.app/Contents/MacOS/Facts and Chicks";
-			};
-			name = Debug;
-		};
-		5488B3761C53FABC0057E106 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Facts and Chicks - MenuTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Maxi.Facts-and-Chicks---MenuTests";
-				PRODUCT_NAME = "Facts and Chicks";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Facts and Chicks.app/Contents/MacOS/Facts and Chicks";
-			};
-			name = Release;
-		};
-		5488B3781C53FABC0057E106 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Facts and Chicks - MenuUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Maxi.Facts-and-Chicks---MenuUITests";
-				PRODUCT_NAME = "Facts and Chicks";
-				TEST_TARGET_NAME = "Facts and Chicks - Menu";
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		5488B3791C53FABC0057E106 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Facts and Chicks - MenuUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Maxi.Facts-and-Chicks---MenuUITests";
-				PRODUCT_NAME = "Facts and Chicks";
-				TEST_TARGET_NAME = "Facts and Chicks - Menu";
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -480,24 +302,6 @@
 			buildConfigurations = (
 				5488B3721C53FABC0057E106 /* Debug */,
 				5488B3731C53FABC0057E106 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5488B3741C53FABC0057E106 /* Build configuration list for PBXNativeTarget "Facts and ChicksTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5488B3751C53FABC0057E106 /* Debug */,
-				5488B3761C53FABC0057E106 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5488B3771C53FABC0057E106 /* Build configuration list for PBXNativeTarget "Facts and ChicksUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5488B3781C53FABC0057E106 /* Debug */,
-				5488B3791C53FABC0057E106 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

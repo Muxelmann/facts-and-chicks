@@ -20,34 +20,6 @@
                ReferencedContainer = "container:Facts and Chicks.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5488B35C1C53FABC0057E106"
-               BuildableName = "Facts and Chicks.xctest"
-               BlueprintName = "Facts and ChicksTests"
-               ReferencedContainer = "container:Facts and Chicks.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5488B3671C53FABC0057E106"
-               BuildableName = "Facts and Chicks.xctest"
-               BlueprintName = "Facts and ChicksUITests"
-               ReferencedContainer = "container:Facts and Chicks.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
