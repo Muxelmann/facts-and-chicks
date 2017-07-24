@@ -6,5 +6,5 @@ osx_image: xcode8.3
 #   - "Facts and Chicks - Debug"
 #   - "Facts and Chicks - Release"
 script:
-  - xcodebuild -project "Facts and Chicks.xcodeproj" -scheme "Facts and Chicks - Debug" build
-  - xcodebuild -project "Facts and Chicks.xcodeproj" -scheme "Facts and Chicks - Release" build
+  - xcodebuild clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -project Facts\ and\ Chicks.xcodeproj -scheme Facts\ and\ Chicks\ -\ Debug
+  - xcodebuild clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -project Facts\ and\ Chicks.xcodeproj -scheme Facts\ and\ Chicks\ -\ Release
