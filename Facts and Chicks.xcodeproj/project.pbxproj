@@ -28,7 +28,7 @@
 		5444EBB51C543ED900152E2C /* ChickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChickViewController.xib; sourceTree = "<group>"; };
 		5444EBE71C5456D100152E2C /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		5466E8D71C5565E100B4B514 /* Pref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pref.swift; sourceTree = "<group>"; };
-		5488B34C1C53FABC0057E106 /* Facts and Chicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facts and Chicks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5488B34C1C53FABC0057E106 /* Facts and Chicks.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "Facts and Chicks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5488B34F1C53FABC0057E106 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5488B3531C53FABC0057E106 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5488B3581C53FABC0057E106 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
