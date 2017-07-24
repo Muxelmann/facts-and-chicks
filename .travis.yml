@@ -1,7 +1,10 @@
 os: "osx"
 language: objective-c
 osx_image: xcode8.3
-xcode_project: "Facts and Chicks.xcodeproj"
-xcode_scheme:
-  - "Facts and Chicks - Debug"
-  - "Facts and Chicks - Release"
+# xcode_project: "Facts and Chicks.xcodeproj"
+# xcode_scheme:
+#   - "Facts and Chicks - Debug"
+#   - "Facts and Chicks - Release"
+script:
+  - xcodebuild -project "Facts and Chicks.xcodeproj" -scheme "Facts and Chicks - Debug" build
+  - xcodebuild -project "Facts and Chicks.xcodeproj" -scheme "Facts and Chicks - Release" build
