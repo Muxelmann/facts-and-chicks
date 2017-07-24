@@ -7,30 +7,6 @@
 //
 
 import Cocoa
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l >= r
-  default:
-    return !(lhs < rhs)
-  }
-}
-
 
 class FactsAndChicks {
     
@@ -123,7 +99,7 @@ class FactsAndChicks {
     
     fileprivate func loadPost(_ id: Int) {
         var postID = id
-        if id >= FactsAndChicks.postCount || id < 0 {
+        if FactsAndChicks.postCount != nil && id >= FactsAndChicks.postCount! || id < 0 {
             postID = 0
         }
         postInfo = FactsAndChicks.getData(postInfoURL.replacingOccurrences(of: "<POST_ID>", with: "\(postID)"))

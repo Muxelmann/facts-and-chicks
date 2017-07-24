@@ -28,7 +28,7 @@ class PreferencesViewController: NSViewController, NSOpenSavePanelDelegate {
     }
     
     override func viewWillAppear() {
-        version.stringValue = "1.0.3"
+        version.stringValue = "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String) b\(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)"
         author.stringValue = "Max"
         
 
