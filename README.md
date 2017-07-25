@@ -12,6 +12,15 @@ The main reason behind this app was to challenge me with writing Swift **3** cod
 
 ## Build
 
+### Xcode
+
+Install Xcode and open the project `Facts and Chicks.xcodeproj`. Select the required scheme in the top left hand corner and build (`cmd + b`) or run (`cmd + r`). The available schemes are:
+
+- `Facts and Chicks - Debug`
+- `Facts and Chicks - Release`
+
+### Terminal
+
 Make sure you install Xcode and the Command Line Tools. Then run:
 
 ```
@@ -24,3 +33,4 @@ This will build the app, copy it into the repository's root directory and remove
 make release
 make debug
 ```
+
