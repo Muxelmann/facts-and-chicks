@@ -9,3 +9,18 @@ The main reason behind this app was to challenge me with writing Swift **3** cod
 ## Preview
 
 ![](https://github.com/Muxelmann/facts-and-chicks/raw/master/Supporting/sample.png)
+
+## Build
+
+Make sure you install Xcode and the Command Line Tools. Then run:
+
+```
+make
+```
+
+This will build the app, copy it into the repository's root directory and remove the temporary `build` folder. If you want to keep this folder, i.e. build the release and debug version, issue one of the following commands:
+
+```
+make release
+make debug
+```
